@@ -1,22 +1,22 @@
-name: { { Name } }
+name: React Build/Release
 
 on:
   push:
-    branches: [{ { Branches } }]
+    branches: [main,integration,feature/**,hotfix/**]
   pull_request:
-    branches: [{ { Branches } }]
+    branches: [main,integration,feature/**,hotfix/**]
   workflow_dispatch:
 
 permissions: write-all
 
 env:
   CI: false
-  Branches: { { Branches } }
-  MainBranch: { { MainBranch } }
-  NPMRegistry: { { NPMRegistry } }
-  InstallCommand: { { InstallCommand } }
-  BuildCommand: { { BuildCommand } }
-  Output: { { Output } }
+  Branches: main,integration,feature/**,hotfix/**
+  MainBranch: main
+  NPMRegistry: https://registry.npmjs.org/
+  InstallCommand: npm ci
+  BuildCommand: npm run build
+  Output: ./build
 
 jobs:
   build:
